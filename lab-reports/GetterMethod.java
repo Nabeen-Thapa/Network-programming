@@ -1,8 +1,7 @@
 //lab 2
 import java.net.*;
 public class GetterMethod{
-    public static void main(String[] args){
-        try{
+    public static void main(String[] args) throws UnknownHostException{
             InetAddress address = InetAddress.getLocalHost();
             System.out.println("host Name: " +address.getHostName());
             System.out.println("Canonical HOst Name:"+ address.getCanonicalHostName());
@@ -12,10 +11,5 @@ public class GetterMethod{
             System.out.println("is local address:" + address.isAnyLocalAddress());
             System.out.println("Is Link Local Address: " + address.isLinkLocalAddress());
             System.out.println("Is Site Local Address: " + address.isSiteLocalAddress());
-        }catch(UnknownHostException e){
-            System.err.println("unable to retrive");
-            e.printStackTrace();
-        }
-
     }
 }

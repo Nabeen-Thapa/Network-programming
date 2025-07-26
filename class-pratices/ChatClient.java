@@ -38,7 +38,7 @@ public class ChatClient {
                 String message = inputField.getText().trim();
                 if (!message.isEmpty()) {
                     chatArea.append("Client: " + message + "\n");
-                    sout.println(message);
+                    sout.println(message);//send to sdrver
                     inputField.setText("");
                 }
             }

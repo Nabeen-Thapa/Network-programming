@@ -76,9 +76,8 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-
-  public Client() throws Exception {
-    
+  public static void main(String[] args) throws Exception {
+    try {
     Socket socket = new Socket("127.0.0.1",2020);
     System.out.println("Successful connection to the server.");
     
@@ -95,12 +94,7 @@ public class Client {
     socket.close();
     System.out.println("Socket closed.");
     
-  }
-  
-  public static void main(String[] args) {
-    try {
-      new Client();
-    } catch (Exception e) {
+  } catch (Exception e) {
       // TODO: handle exception
       e.printStackTrace();
     }
