@@ -2,23 +2,18 @@ import java.io.*;
 import java.net.*;
 
 public class q26_server {
-    public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(5000);
-        System.out.println("Server started. Waiting for client...");
+   public static void main(String[] args) throws IOException {
+        ServerSocket server = new ServerSocket(5000);
+        System.out.println("Echo server started...");
+        Socket client = server.accept();
+        BufferedReader in = new BufferedReader(
+            new InputStreamReader(client.getInputStream()));
+        PrintWriter out = new PrintWriter(client.getOutputStream(), true);
 
-        Socket clientSocket = serverSocket.accept();
-        System.out.println("Client connected.");
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-        String line;
-        while ((line = in.readLine()) != null) {
-            System.out.println("Received: " + line);
-            out.println("Echo: " + line);
+        String msg;
+        while ((msg = in.readLine()) != null) {
+            out.println("Echo: " + msg);
         }
-
-        clientSocket.close();
-        serverSocket.close();
+        server.close();
     }
 }

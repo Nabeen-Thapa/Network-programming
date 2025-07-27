@@ -3,22 +3,16 @@ import java.io.*;
 import java.net.*;
 
 public class q28_server {
-    public static void main(String[] args) {
-        int port = 1234;
-
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            Socket socket = serverSocket.accept();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String clientMessage = in.readLine();
-            System.out.println("Received from client: " + clientMessage);
-
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("Hello from server. Your message was received.");
-
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws IOException {
+        ServerSocket server = new ServerSocket(7000);
+        System.out.println("Server ready to receive messages...");
+        Socket client = server.accept();
+        BufferedReader in = new BufferedReader(
+            new InputStreamReader(client.getInputStream()));
+        String msg;
+        while ((msg = in.readLine()) != null) {
+            System.out.println("Received: " + msg);
         }
+        server.close();
     }
 }

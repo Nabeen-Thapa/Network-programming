@@ -14,12 +14,10 @@ public class q22 {
             connection.setRequestMethod("GET");
             connection.connect();
 
-        
             Map<String, List<String>> headers = connection.getHeaderFields();
 
             System.out.println("🔍 HTTP Headers:\n");
 
-            
             for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
                 String key = entry.getKey();
                 for (String value : entry.getValue()) {

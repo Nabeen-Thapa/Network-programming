@@ -1,37 +1,20 @@
-import java.io.*;
 import java.net.*;
+import java.io.*;
 
 public class q24 {
     public static void main(String[] args) {
         try {
-            // Step 1: Create URL object
-            URL url = new URL("https://example.com");
-
-            // Step 2: Open connection
-            URLConnection connection = url.openConnection();
-
-            // Step 3: Connect (optional)
-            connection.connect();
-
-            // Step 4: Read data from connection
-            BufferedReader reader = new BufferedReader(
-                new InputStreamReader(connection.getInputStream()));
+            URLConnection conn = new URL("http://example.com").openConnection();
+            BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
             String line;
-
-            System.out.println("----- Web Page Content -----\n");
-
-            // Step 5: Read and print to terminal
-            while ((line = reader.readLine()) != null) {
+            while ((line = in.readLine()) != null) {
                 System.out.println(line);
             }
-
-            reader.close();
-
-            System.out.println("\n----- End of Web Page -----");
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

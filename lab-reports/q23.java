@@ -11,12 +11,10 @@ public class q23 {
             URLConnection connection = url.openConnection();
 
             // Configuration
-            connection.setDoOutput(true); // Enable output for POST
-            connection.setDoInput(true);  // Enable input
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            connection.setRequestProperty("User-Agent", "Custom Java Client/1.0");
-            connection.setConnectTimeout(5000); // 5 seconds
-            connection.setReadTimeout(5000);    // 5 seconds
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            connection.setRequestProperty("User-Agent", "JavaLabBot/1.0");
+            connection.setDoOutput(true);
 
             // Sending POST data
             String postData = "name=Nabin&lab=23";
