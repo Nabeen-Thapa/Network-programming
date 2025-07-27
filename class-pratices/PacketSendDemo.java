@@ -49,6 +49,4 @@ public class PacketSendDemo{
             System.err.println("Error - " + ioe);
         }
     }
-    
-
 }
